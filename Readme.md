@@ -1,4 +1,6 @@
-#Working with Docker Compose
+# Working with Docker Compose
+
+Welcome to the labs for working with Docker Compose. 
 
 ## Distributed Container Apps
 
