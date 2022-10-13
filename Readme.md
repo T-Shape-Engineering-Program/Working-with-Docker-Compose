@@ -1,4 +1,4 @@
-Working with Docker Compose
+#Working with Docker Compose
 
 ## Distributed Container Apps
 
