@@ -70,7 +70,7 @@ Docker Compose can define the services of your app - which run in containers - a
 
 You can use Compose even for simple apps - this just defines an Nginx container:
 
-- [docker-compose.yml](./nginx/docker-compose.yml)
+- [docker-compose.yml](compose/nginx/docker-compose.yml)
 
 > Why bother putting this in a Compose file? It specifies an image version and the ports to use; it acts as project documentation, as well as being an executable spec for the app.
 
@@ -87,7 +87,7 @@ docker-compose
 
 ```
 # run 'up' to start the app, pointing to the Compose file
-docker-compose -f ./labs/compose/nginx/docker-compose.yml up
+docker-compose -f ./compose/nginx/docker-compose.yml up
 ```
 
 </details><br/>
@@ -98,7 +98,7 @@ Use Ctrl-C / Cmd-C to exit - that stops the container.
 
 ## Multi-container apps in Compose
 
-Compose is more useful with more components. [rng/v1.yml](./rng/v1.yml) defines the two parts of the random number app:
+Compose is more useful with more components. [rng/v1.yml](compose/rng/v1.yml) defines the two parts of the random number app:
 
 - there are two services, one for the API and one for the web
 - each service defines the image to use and the ports to expose
@@ -113,13 +113,13 @@ Compose is more useful with more components. [rng/v1.yml](./rng/v1.yml) defines 
 
 ```
 # run the app:
-docker-compose -f ./labs/compose/rng/v1.yml up -d
+docker-compose -f ./compose/rng/v1.yml up -d
 
 # use compose to show just this app's containers:
-docker-compose -f ./labs/compose/rng/v1.yml ps
+docker-compose -f ./compose/rng/v1.yml ps
 
 # and this app's logs:
-docker-compose -f ./labs/compose/rng/v1.yml logs
+docker-compose -f ./compose/rng/v1.yml logs
 ```
 
 </details><br/>
@@ -167,11 +167,11 @@ The name of a service in the Compose file becomes the DNS name containers can us
 
 We could change the API service in the Compose file, but the web app supports a configuration setting for the API URL:
 
-- [rng/v2.yml](./rng/v2.yml) sets that config value and also increases the logging level for the API.
+- [rng/v2.yml](compose/rng/v2.yml) sets that config value and also increases the logging level for the API.
 
 Here we'll see the desired-state approach. If you need to change your application, you change the YAML and run `up` again. Compose looks at what's running and what you're asking to run and it makes whatever changes it needs.
 
-📋 Deploy the updated Compose spec in `labs/compose/rng/v2.yml` and use Compose to follow all the container logs.
+📋 Deploy the updated Compose spec in `compose/rng/v2.yml` and use Compose to follow all the container logs.
 
 <details>
   <summary>Not sure how?</summary>
@@ -194,7 +194,7 @@ Add an Nginx container and another network to the RNG app definition. Configure 
 
 Deploy the updated spec. What IP address(es) does the Nginx container have? Can you connect the containers together - is the Nginx container accessible from the RNG web container, even though it was created afterwards?
 
-> Stuck? Try [hints](hints.md) or check the [solution](solution.md).
+> Stuck? Try [hints](compose/hints.md) or check the [solution](compose/solution.md).
 
 ___
 ## Cleanup
